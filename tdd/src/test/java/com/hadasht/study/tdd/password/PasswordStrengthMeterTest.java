@@ -8,45 +8,30 @@ class PasswordStrengthMeterTest {
 
 	private PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
 
-	@Test
-	void 모든조건을_충족하면_STRONG() throws Exception {
-		//given
-
+	private void assertStrength(String s, PasswordStrength strong) {
 		//when
-		PasswordStrength passwordStrength = passwordStrengthMeter.meter("123qwe!@#");
-		PasswordStrength passwordStrength2 = passwordStrengthMeter.meter("abcABC123!!!");
+		PasswordStrength passwordStrength = passwordStrengthMeter.meter(s);
 
 		//then
-		assertEquals(PasswordStrength.STRONG, passwordStrength);
-		assertEquals(PasswordStrength.STRONG, passwordStrength2);
-
+		assertEquals(strong, passwordStrength);
 	}
 
 	@Test
+	void 모든조건을_충족하면_STRONG() throws Exception {
+		assertStrength("123qwe!@#", PasswordStrength.STRONG);
+		assertStrength("abcABC123!!!", PasswordStrength.STRONG);
+	}
+
+
+
+	@Test
 	void 길이가8자리_미만이면_NORMAL() throws Exception {
-		//given
-
-		//when
-		PasswordStrength passwordStrength = passwordStrengthMeter.meter("12qw!@");
-		PasswordStrength passwordStrength2 = passwordStrengthMeter.meter("s83B%!");
-
-		//then
-		assertEquals(PasswordStrength.NORMAL, passwordStrength);
-		assertEquals(PasswordStrength.NORMAL, passwordStrength2);
-
+		assertStrength("12qw!@", PasswordStrength.NORMAL);
+		assertStrength("s83B%!", PasswordStrength.NORMAL);
 	}
 
 	@Test
 	void 숫자없이_8자리_이상이면_NORMAL() throws Exception {
-		//given
-
-
-		//when
-		PasswordStrength passwordStrength = passwordStrengthMeter.meter("abcABC!@#");
-
-		//then
-		assertEquals(PasswordStrength.NORMAL, passwordStrength);
-
-
+		assertStrength("abcABC!@#", PasswordStrength.NORMAL);
 	}
 }
