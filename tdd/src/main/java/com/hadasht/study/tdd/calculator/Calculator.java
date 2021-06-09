@@ -1,4 +1,4 @@
-package com.hadasht.study.tdd;
+package com.hadasht.study.tdd.calculator;
 
 public class Calculator {
 

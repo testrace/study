@@ -1,5 +1,6 @@
-package com.hadasht.study.tdd;
+package com.hadasht.study.tdd.calculator;
 
+import com.hadasht.study.tdd.calculator.Calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
