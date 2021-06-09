@@ -6,10 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordStrengthMeterTest {
 
+	private PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
+
 	@Test
 	void 모든조건을_충족하면_STRONG() throws Exception {
 		//given
-		PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
 
 		//when
 		PasswordStrength passwordStrength = passwordStrengthMeter.meter("123qwe!@#");
@@ -24,7 +25,6 @@ class PasswordStrengthMeterTest {
 	@Test
 	void 길이가8자리_미만이면_NORMAL() throws Exception {
 		//given
-		PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
 
 		//when
 		PasswordStrength passwordStrength = passwordStrengthMeter.meter("12qw!@");
@@ -39,7 +39,7 @@ class PasswordStrengthMeterTest {
 	@Test
 	void 숫자없이_8자리_이상이면_NORMAL() throws Exception {
 		//given
-		PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
+
 
 		//when
 		PasswordStrength passwordStrength = passwordStrengthMeter.meter("abcABC!@#");
