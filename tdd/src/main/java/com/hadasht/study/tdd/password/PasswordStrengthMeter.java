@@ -7,33 +7,27 @@ public class PasswordStrengthMeter {
 			return PasswordStrength.INVALID;
 		}
 
-		boolean lengthEnough = s.length() >= 8;
-		boolean containsNumber = isContainsNumber(s);
-		boolean containsUppercase = isContainsUppercase(s);
+		var metCounts = 0;
 
-		if (lengthEnough && !containsNumber && !containsUppercase) {
-			return PasswordStrength.WEAK;
+		if (s.length() >= 8) {
+			metCounts++;
 		}
-		if (!lengthEnough && containsNumber && !containsUppercase) {
-			return PasswordStrength.WEAK;
+		if (isContainsNumber(s)) {
+			metCounts++;
 		}
-		if (!lengthEnough && !containsNumber && containsUppercase) {
-			return PasswordStrength.WEAK;
+		if (isContainsUppercase(s)) {
+			metCounts++;
 		}
 
-		if (!lengthEnough) {
-			return PasswordStrength.NORMAL;
+		switch (metCounts) {
+			case 1:
+				return PasswordStrength.WEAK;
+			case 2:
+				return PasswordStrength.NORMAL;
+			default:
+				return PasswordStrength.STRONG;
 		}
 
-		if (!containsNumber) {
-			return PasswordStrength.NORMAL;
-		}
-
-		if (!containsUppercase) {
-			return PasswordStrength.NORMAL;
-		}
-
-		return PasswordStrength.STRONG;
 	}
 
 	private boolean isContainsUppercase(String s) {
