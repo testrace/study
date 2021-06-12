@@ -7,17 +7,7 @@ public class PasswordStrengthMeter {
 			return PasswordStrength.INVALID;
 		}
 
-		var metCounts = 0;
-
-		if (s.length() >= 8) {
-			metCounts++;
-		}
-		if (isContainsNumber(s)) {
-			metCounts++;
-		}
-		if (isContainsUppercase(s)) {
-			metCounts++;
-		}
+		int metCounts = getMetCounts(s);
 
 		switch (metCounts) {
 			case 0:
@@ -29,6 +19,21 @@ public class PasswordStrengthMeter {
 				return PasswordStrength.STRONG;
 		}
 
+	}
+
+	private int getMetCounts(String s) {
+		var metCounts = 0;
+
+		if (s.length() >= 8) {
+			metCounts++;
+		}
+		if (isContainsNumber(s)) {
+			metCounts++;
+		}
+		if (isContainsUppercase(s)) {
+			metCounts++;
+		}
+		return metCounts;
 	}
 
 	private boolean isContainsUppercase(String s) {
