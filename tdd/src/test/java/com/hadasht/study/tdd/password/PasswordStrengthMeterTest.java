@@ -50,4 +50,12 @@ class PasswordStrengthMeterTest {
 	void invalid_if_empty() throws Exception {
 		assertStrength("", PasswordStrength.INVALID);
 	}
+
+	@Test
+	@DisplayName("대문자가 없는 경우")
+	void hasNoUppercaseThenNORMAL() throws Exception {
+		assertStrength("123qwe!@#", PasswordStrength.NORMAL);
+	}
+
+
 }
