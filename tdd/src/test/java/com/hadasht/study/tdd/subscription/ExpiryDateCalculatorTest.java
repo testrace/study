@@ -102,4 +102,25 @@ class ExpiryDateCalculatorTest {
 		//then
 		assertExpiryDate(payData3, LocalDate.of(2019, 7, 31));
 	}
+
+
+	@Test
+	@DisplayName("2만원 이상 납부")
+	void pay10000wonOver() throws Exception {
+		//given
+		PayData payData = PayData.builder()
+		                         .billingDate(LocalDate.of(2021, 1, 1))
+		                         .payAmount(20_000)
+		                         .build();
+		PayData payData2 = PayData.builder()
+		                          .billingDate(LocalDate.of(2021, 2, 1))
+		                          .payAmount(30_000)
+		                          .build();
+
+
+		//then
+		assertExpiryDate(payData, LocalDate.of(2021, 3, 1));
+		assertExpiryDate(payData2, LocalDate.of(2021, 5, 1));
+
+	}
 }
