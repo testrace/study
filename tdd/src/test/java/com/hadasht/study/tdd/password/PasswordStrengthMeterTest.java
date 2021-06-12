@@ -1,12 +1,13 @@
 package com.hadasht.study.tdd.password;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordStrengthMeterTest {
 
-	private PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
+	private final PasswordStrengthMeter passwordStrengthMeter = new PasswordStrengthMeter();
 
 	private void assertStrength(String s, PasswordStrength strong) {
 		//when
@@ -17,7 +18,8 @@ class PasswordStrengthMeterTest {
 	}
 
 	@Test
-	void 모든조건을_충족하면_STRONG() throws Exception {
+	@DisplayName("모두일치하는경우")
+	void all_match_then_strong() throws Exception {
 		assertStrength("123qwe!@#", PasswordStrength.STRONG);
 		assertStrength("abcABC123!!!", PasswordStrength.STRONG);
 	}
@@ -25,13 +27,27 @@ class PasswordStrengthMeterTest {
 
 
 	@Test
-	void 길이가8자리_미만이면_NORMAL() throws Exception {
+	@DisplayName("길이가 8자리 이하인 경우")
+	void length_under_8_then_normal() throws Exception {
 		assertStrength("12qw!@", PasswordStrength.NORMAL);
 		assertStrength("s83B%!", PasswordStrength.NORMAL);
 	}
 
 	@Test
-	void 숫자없이_8자리_이상이면_NORMAL() throws Exception {
+	@DisplayName("길이가 8자리 이상, 숫자가 없는 경우")
+	void length_over_8_an_has_no_number_then_NORMAL() throws Exception {
 		assertStrength("abcABC!@#", PasswordStrength.NORMAL);
+	}
+
+	@Test
+	@DisplayName("널 경우")
+	void invalid_if_null() throws Exception {
+		assertStrength(null, PasswordStrength.INVALID);
+	}
+
+	@Test
+	@DisplayName("값이 비어있는 경우")
+	void invalid_if_empty() throws Exception {
+		assertStrength("", PasswordStrength.INVALID);
 	}
 }
