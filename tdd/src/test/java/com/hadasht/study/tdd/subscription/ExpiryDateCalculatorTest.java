@@ -23,7 +23,7 @@ class ExpiryDateCalculatorTest {
 	void pay10000won() throws Exception {
 		//given
 		LocalDate billingDate = LocalDate.of(2021, 1, 1);
-		LocalDate billingDate2 = LocalDate.of(2021, 1, 1);
+		LocalDate billingDate2 = LocalDate.of(2021, 2, 1);
 		int payAmount = 10_000;
 
 		//when
@@ -31,8 +31,8 @@ class ExpiryDateCalculatorTest {
 		LocalDate expiryDate2 = calculator.calculateExpiryDate(billingDate2, payAmount);
 
 		//then
-		assertEquals(LocalDate.of(2020,2,1), expiryDate);
-		assertEquals(LocalDate.of(2020,3,1), expiryDate2);
+		assertEquals(LocalDate.of(2021,2,1), expiryDate);
+		assertEquals(LocalDate.of(2021,3,1), expiryDate2);
 
 	}
 }
