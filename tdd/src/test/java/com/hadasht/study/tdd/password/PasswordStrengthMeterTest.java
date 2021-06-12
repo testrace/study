@@ -64,6 +64,12 @@ class PasswordStrengthMeterTest {
 		assertStrength("abcdefghijklmnop", PasswordStrength.WEAK);
 	}
 
+	@Test
+	@DisplayName("숫자만 있는 경우")
+	void meetsOnlyNumberThenWEAK() throws Exception {
+		assertStrength("13579", PasswordStrength.WEAK);
+	}
+
 
 
 
