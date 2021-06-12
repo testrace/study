@@ -16,19 +16,23 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ExpiryDateCalculatorTest {
 
+	private final ExpiryDateCalculator calculator = new ExpiryDateCalculator();
+
 	@Test
 	@DisplayName("만원 납부")
 	void pay10000won() throws Exception {
 		//given
 		LocalDate billingDate = LocalDate.of(2021, 1, 1);
+		LocalDate billingDate2 = LocalDate.of(2021, 1, 1);
 		int payAmount = 10_000;
 
 		//when
-		ExpiryDateCalculator calculator = new ExpiryDateCalculator();
 		LocalDate expiryDate = calculator.calculateExpiryDate(billingDate, payAmount);
+		LocalDate expiryDate2 = calculator.calculateExpiryDate(billingDate2, payAmount);
 
 		//then
 		assertEquals(LocalDate.of(2020,2,1), expiryDate);
+		assertEquals(LocalDate.of(2020,3,1), expiryDate2);
 
 	}
 }
