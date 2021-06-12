@@ -20,7 +20,7 @@ class PasswordStrengthMeterTest {
 	@Test
 	@DisplayName("모두일치하는경우")
 	void all_match_then_strong() throws Exception {
-		assertStrength("123qwe!@#", PasswordStrength.STRONG);
+		assertStrength("123qwe!@#QWE", PasswordStrength.STRONG);
 		assertStrength("abcABC123!!!", PasswordStrength.STRONG);
 	}
 
@@ -56,6 +56,15 @@ class PasswordStrengthMeterTest {
 	void hasNoUppercaseThenNORMAL() throws Exception {
 		assertStrength("123qwe!@#", PasswordStrength.NORMAL);
 	}
+
+
+	@Test
+	@DisplayName("길이만 8자 이상인 경우")
+	void meetsOnlyLengthOver8ThenWEAK() throws Exception {
+		assertStrength("abcdefghijklmnop", PasswordStrength.WEAK);
+	}
+
+
 
 
 }

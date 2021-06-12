@@ -1,5 +1,5 @@
 package com.hadasht.study.tdd.password;
 
 public enum PasswordStrength {
-	NORMAL, INVALID, STRONG
+	NORMAL, INVALID, WEAK, STRONG
 }
