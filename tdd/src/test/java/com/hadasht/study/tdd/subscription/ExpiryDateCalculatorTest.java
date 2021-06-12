@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 요구사항
@@ -38,7 +38,27 @@ class ExpiryDateCalculatorTest {
 				LocalDate.of(2021, 2, 1));
 		assertExpiryDate(
 				LocalDate.of(2021, 2, 1), payAmount,
-				LocalDate.of(2021,3,1));
+				LocalDate.of(2021, 3, 1));
 
 	}
+
+	@Test
+	@DisplayName("납부일과 한달 뒤 일자가 같지 않음")
+	void pay10000wonExpiryDate() throws Exception {
+		//given
+		int payAmount = 10_000;
+
+		//then
+		assertExpiryDate(
+				LocalDate.of(2019, 1, 31), payAmount,
+				LocalDate.of(2019, 2, 28));
+		assertExpiryDate(
+				LocalDate.of(2019, 5, 31), payAmount,
+				LocalDate.of(2019, 6, 30));
+		assertExpiryDate(
+				LocalDate.of(2020, 1, 31), payAmount,
+				LocalDate.of(2020, 2, 29));
+
+	}
+
 }
