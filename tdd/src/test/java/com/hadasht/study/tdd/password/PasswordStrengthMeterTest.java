@@ -29,7 +29,7 @@ class PasswordStrengthMeterTest {
 	@Test
 	@DisplayName("길이가 8자리 이하인 경우")
 	void length_under_8_then_normal() throws Exception {
-		assertStrength("12qw!@", PasswordStrength.NORMAL);
+		assertStrength("12qW!@", PasswordStrength.NORMAL);
 		assertStrength("s83B%!", PasswordStrength.NORMAL);
 	}
 
