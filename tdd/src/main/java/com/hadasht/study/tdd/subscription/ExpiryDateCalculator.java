@@ -1,6 +1,7 @@
 package com.hadasht.study.tdd.subscription;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 
 public class ExpiryDateCalculator {
 
@@ -9,6 +10,9 @@ public class ExpiryDateCalculator {
 		if (payData.getFirstBillingDate() != null) {
 			LocalDate candidateExp = payData.getBillingDate().plusMonths(monthsToAdd);
 			if (payData.getFirstBillingDate().getDayOfMonth() != candidateExp.getDayOfMonth()) {
+				if (YearMonth.from(candidateExp).lengthOfMonth() < payData.getFirstBillingDate().getDayOfMonth()) {
+					return candidateExp.withDayOfMonth(YearMonth.from(candidateExp).lengthOfMonth());
+				}
 				return candidateExp.withDayOfMonth(payData.getFirstBillingDate().getDayOfMonth());
 			}
 		}
