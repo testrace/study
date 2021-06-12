@@ -5,14 +5,15 @@ import java.time.LocalDate;
 public class ExpiryDateCalculator {
 
 	public LocalDate calculateExpiryDate(PayData payData) {
+		var monthsToAdd = 1;
 		if (payData.getFirstBillingDate() != null) {
-			LocalDate candidateExp = payData.getBillingDate().plusMonths(1);
+			LocalDate candidateExp = payData.getBillingDate().plusMonths(monthsToAdd);
 			if (payData.getFirstBillingDate().getDayOfMonth() != candidateExp.getDayOfMonth()) {
 				return candidateExp.withDayOfMonth(payData.getFirstBillingDate().getDayOfMonth());
 			}
 		}
 
-		return payData.getBillingDate().plusMonths(1L);
+		return payData.getBillingDate().plusMonths(monthsToAdd);
 	}
 
 }
