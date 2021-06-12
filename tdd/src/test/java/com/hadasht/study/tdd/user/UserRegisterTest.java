@@ -11,10 +11,11 @@ class UserRegisterTest {
 	private UserRegister userRegister;
 	private final StubWeakPasswordChecker stubWeakPasswordChecker = new StubWeakPasswordChecker();
 	private final FakeUserRepository fakeUserRepository = new FakeUserRepository();
+	private SpyEmailNotifier spyEmailNotifier = new SpyEmailNotifier();
 
 	@BeforeEach
 	void setUp() {
-		userRegister = new UserRegister(stubWeakPasswordChecker, fakeUserRepository);
+		userRegister = new UserRegister(stubWeakPasswordChecker, fakeUserRepository, spyEmailNotifier);
 	}
 
 	@Test
@@ -60,5 +61,18 @@ class UserRegisterTest {
 
 	}
 
+	@Test
+	@DisplayName("가입하면 메일을 전송")
+	void whenRegisterThenSendMail() throws Exception {
+		//given
 
+
+		//when
+		userRegister.register("id", "pw", "abcd@email.com");
+
+		//then
+		assertTrue(spyEmailNotifier.isCalled());
+		assertEquals("abcd@email.com", spyEmailNotifier.getEmail());
+
+	}
 }
