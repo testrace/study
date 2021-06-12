@@ -70,6 +70,12 @@ class PasswordStrengthMeterTest {
 		assertStrength("13579", PasswordStrength.WEAK);
 	}
 
+	@Test
+	@DisplayName("대문자만 있는 경우")
+	void meetsOnlyUppercaseThenWEAK() throws Exception {
+		assertStrength("ABCDEFG", PasswordStrength.WEAK);
+	}
+
 
 
 
