@@ -76,6 +76,12 @@ class PasswordStrengthMeterTest {
 		assertStrength("ABCDEFG", PasswordStrength.WEAK);
 	}
 
+	@Test
+	@DisplayName("아무 조건도 충족 못하는 경우")
+	void meetsNoneThenWEAK() throws Exception {
+		assertStrength("1", PasswordStrength.WEAK);
+	}
+
 
 
 

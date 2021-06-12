@@ -20,6 +20,7 @@ public class PasswordStrengthMeter {
 		}
 
 		switch (metCounts) {
+			case 0:
 			case 1:
 				return PasswordStrength.WEAK;
 			case 2:
