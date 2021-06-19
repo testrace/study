@@ -31,10 +31,13 @@ class Puzzle06Test {
 
 		/**
 		 * int     -> byte    -> char    -> int
+		 * <p>
 		 * 부호있음 -> 부호있음 -> 부호없음 -> 부호있음
+		 * </p>
 		 * 부호확장 -> 부호확장 -> 0의확장  -> 0의확장
+		 * <p>
 		 * -1      ->  -1     -> 2^16 -1 -> 2^16 -1
-		 *
+		 * </p>
 		 */
 		public static long puzzle() {
 			return (int) (char) (byte) -1;
