@@ -24,21 +24,21 @@ class Puzzle02Test {
 
 	@ParameterizedTest(name = PUZZLE_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("change")
-	void change(double x, double y, double answer) throws Exception {
+	void puzzle(double x, double y, double answer) throws Exception {
 		double change = Puzzle02.change(x, y);
 		assertThat(change).isEqualTo(answer);
 	}
 
 	@ParameterizedTest(name = ANSWER_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("change")
-	void isOdd_Answer(double x, double y, double answer) throws Exception {
+	void answer(double x, double y, double answer) throws Exception {
 		double v = Puzzle02.change_Answer(x, y);
 		assertThat(v).isEqualTo(answer);
 	}
 
 	@ParameterizedTest(name = SOLUTION_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("change")
-	void isOdd_Solution(double x, double y, double answer) throws Exception {
+	void solution(double x, double y, double answer) throws Exception {
 		BigDecimal bigDecimal = Puzzle02.change_Solution(x, y);
 		assertThat(bigDecimal).isEqualTo(new BigDecimal(String.valueOf(answer)));
 	}

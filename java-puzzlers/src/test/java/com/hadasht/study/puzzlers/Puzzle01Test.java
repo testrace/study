@@ -24,21 +24,21 @@ class Puzzle01Test {
 
 	@ParameterizedTest(name = PUZZLE_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("isOdd")
-	void isOdd(int i, boolean isTrue) throws Exception {
+	void puzzle(int i, boolean isTrue) throws Exception {
 		boolean isOdd = Puzzle01.isOdd(i);
 		assertThat(isOdd).isEqualTo(isTrue);
 	}
 
 	@ParameterizedTest(name = ANSWER_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("isOdd")
-	void isOdd_Answer(int i, boolean isTrue) throws Exception {
+	void answer(int i, boolean isTrue) throws Exception {
 		boolean isOdd = Puzzle01.isOdd_Answer(i);
 		assertThat(isOdd).isEqualTo(isTrue);
 	}
 
 	@ParameterizedTest(name = SOLUTION_INDEX_ARGUMENTS_WITH_NAMES)
 	@MethodSource("isOdd")
-	void isOdd_Solution(int i, boolean isTrue) throws Exception {
+	void solution(int i, boolean isTrue) throws Exception {
 		boolean isOdd = Puzzle01.isOdd_Solution(i);
 		assertThat(isOdd).isEqualTo(isTrue);
 	}

@@ -13,21 +13,21 @@ class Puzzle03Test {
 
 	@Test
 	@DisplayName(PUZZLE_NAME)
-	void longDivision() throws Exception {
+	void puzzle() throws Exception {
 		long puzzle = Puzzle03.longDivision();
 		assertThat(puzzle).isEqualTo(1000L);
 	}
 
 	@Test
 	@DisplayName(ANSWER_NAME)
-	void isOdd_Answer() throws Exception {
+	void answer() throws Exception {
 		long answer = Puzzle03.longDivision_Answer();
 		assertThat(answer).isEqualTo(1000L);
 	}
 
 	@Test
 	@DisplayName(SOLUTION_NAME)
-	void isOdd_Solution() throws Exception {
+	void solution() throws Exception {
 		long solution = Puzzle03.longDivision_Solution();
 		assertThat(solution).isEqualTo(1000L);
 	}
