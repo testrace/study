@@ -1,14 +1,12 @@
 package chapter05;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Mission07 {
 
     public static String solution(String require, String subject) {
         Deque<Character> stack = new ArrayDeque<>();
+
 
         for (char c : require.toCharArray()) {
             stack.offer(c);
