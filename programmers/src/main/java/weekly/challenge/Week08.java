@@ -1,8 +1,6 @@
 package weekly.challenge;
 
 import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
 
 public class Week08 {
     public static int solution(int[][] sizes) {
