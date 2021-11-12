@@ -1,0 +1,59 @@
+package lotto.domain;
+
+import java.util.Objects;
+
+public class LottoNumber {
+
+    private final int value;
+
+    private LottoNumber(int value) {
+        this.value = value;
+    }
+
+    public static LottoNumber from(int lottoNumber) {
+        validate(lottoNumber);
+        return LottoNumberCache.cache[lottoNumber];
+    }
+
+    private static void validate(int value) {
+        if (isInvalidRange(value)) {
+            throw new LottoNumberException(value);
+        }
+    }
+
+    private static boolean isInvalidRange(int value) {
+        return value < LottoNumberCache.MIN || value > LottoNumberCache.MAX;
+    }
+
+    private static class LottoNumberCache {
+
+        static final int MIN = 1;
+        static final int MAX = 45;
+        static final LottoNumber[] cache;
+
+        static {
+            cache = new LottoNumber[MAX + 1];
+
+            for (int i = MIN; i < MAX; i++) {
+                cache[i] = new LottoNumber(i);
+            }
+        }
+
+        private LottoNumberCache() {
+            throw new AssertionError();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LottoNumber that = (LottoNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
+}
