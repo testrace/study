@@ -1,5 +1,7 @@
-package lotto.stringcalculator;
+package calculator;
 
+import calculator.StringNumber;
+import calculator.StringNumberException;
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

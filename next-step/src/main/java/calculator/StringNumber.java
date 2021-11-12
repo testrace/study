@@ -1,4 +1,4 @@
-package lotto.stringcalculator;
+package calculator;
 
 import java.util.Objects;
 

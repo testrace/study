@@ -1,4 +1,4 @@
-package lotto.stringcalculator;
+package calculator;
 
 public class Calculator {
 
