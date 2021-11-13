@@ -1,11 +1,12 @@
 package lotto.domain;
 
-import org.assertj.core.api.ThrowableAssert;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
@@ -17,19 +18,16 @@ import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
 
+    List<LottoNumber> lottoNumbers;
+
+    @BeforeEach
+    void setUp() {
+        lottoNumbers = generateLottoNumbers(1, 2, 3, 4, 5, 6);
+    }
+
     @Test
     @DisplayName("서로 다른 6개 번호를 가진 로또")
     void construct() throws Exception {
-        //given
-        List<LottoNumber> lottoNumbers = Arrays.asList(
-                LottoNumber.from(1),
-                LottoNumber.from(2),
-                LottoNumber.from(3),
-                LottoNumber.from(4),
-                LottoNumber.from(5),
-                LottoNumber.from(6)
-        );
-
         //when
         Lotto actual = Lotto.from(lottoNumbers);
 
@@ -56,6 +54,21 @@ class LottoTest {
                 Arguments.of(generateLottoNumbers(1, 2, 3, 4, 5)),
                 Arguments.of(generateLottoNumbers())
         );
+    }
+
+    @ParameterizedTest(name = "{index} [{arguments}]")
+    @CsvSource(value = {
+            "1,true",
+            "7,false"
+    })
+    @DisplayName("로또 번호 포함")
+    void contains(int number, boolean expected) throws Exception {
+        //when
+        boolean actual = lottoNumbers.contains(LottoNumber.from(number));
+
+        //then
+        assertThat(actual).isEqualTo(expected);
+
     }
 
     private static List<LottoNumber> generateLottoNumbers(int... numbers) {

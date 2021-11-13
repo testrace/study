@@ -23,6 +23,14 @@ public class Lotto {
         return new Lotto(new TreeSet<>(lottoNumbers));
     }
 
+    public boolean contains(LottoNumber lottoNumber) {
+        return this.lottoNumbers.contains(lottoNumber);
+    }
+
+    public Set<LottoNumber> numbers() {
+        return Collections.unmodifiableSet(lottoNumbers);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
