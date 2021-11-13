@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.Objects;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
 
     private final int value;
 
@@ -23,6 +23,15 @@ public class LottoNumber {
 
     private static boolean isInvalidRange(int value) {
         return value < LottoNumberCache.MIN || value > LottoNumberCache.MAX;
+    }
+
+    public int value() {
+        return value;
+    }
+
+    @Override
+    public int compareTo(LottoNumber other) {
+        return Integer.compare(this.value, other.value());
     }
 
     private static class LottoNumberCache {
