@@ -7,10 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static lotto.domain.DefaultLottoGenerator.generateLotto;
 import static org.assertj.core.api.Assertions.*;
 
 class WinningLottoTest {
@@ -54,16 +53,9 @@ class WinningLottoTest {
                 Arguments.of(generateLotto(1, 2, 3, 4, 5, 7), 5),
                 Arguments.of(generateLotto(1, 2, 3, 4, 7, 8), 4),
                 Arguments.of(generateLotto(1, 2, 3, 7, 8, 9), 3),
-                Arguments.of(generateLotto(1, 2, 7, 8, 9, 10), 2),
-                Arguments.of(generateLotto(1, 7, 8, 9, 10, 11), 1),
                 Arguments.of(generateLotto(7, 8, 9, 10, 11, 12), 0)
         );
     }
 
-    private static Lotto generateLotto(int... numbers) {
-        return Arrays.stream(numbers)
-                .mapToObj(LottoNumber::from)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), Lotto::from));
-    }
 
 }
