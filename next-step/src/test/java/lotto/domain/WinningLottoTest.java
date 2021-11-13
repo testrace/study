@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static lotto.domain.DefaultLottoGenerator.generateLotto;
+import static lotto.domain.DefaultLotto.generateLotto;
 import static org.assertj.core.api.Assertions.*;
 
 class WinningLottoTest {

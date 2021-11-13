@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DefaultLottoGenerator {
+public class DefaultLotto {
 
-    private DefaultLottoGenerator() {
+    private DefaultLotto() {
         throw new AssertionError();
     }
 
-    public static Lotto create() {
+    public static Lotto generateLotto() {
         return Lotto.from(generateLottoNumbers(1, 2, 3, 4, 5, 6));
     }
 
