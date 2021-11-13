@@ -22,4 +22,12 @@ public class WinningLotto {
     public int hashCode() {
         return Objects.hash(lotto);
     }
+
+    public int matchingCount(Lotto lotto) {
+        return (int) this.lotto.numbers()
+                .stream()
+                .filter(lotto::contains)
+                .count();
+    }
+
 }
