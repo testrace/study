@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class LottoNumber implements Comparable<LottoNumber> {
 
+    public static final int MIN = 1;
+    public static final int MAX = 45;
+
     private final int value;
 
     private LottoNumber(int value) {
@@ -22,7 +25,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
     }
 
     private static boolean isInvalidRange(int value) {
-        return value < LottoNumberCache.MIN || value > LottoNumberCache.MAX;
+        return value < MIN || value > MAX;
     }
 
     public int value() {
@@ -36,8 +39,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private static class LottoNumberCache {
 
-        static final int MIN = 1;
-        static final int MAX = 45;
+
         static final LottoNumber[] cache;
 
         static {
