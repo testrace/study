@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import static lotto.domain.DefaultLotto.*;
+import static lotto.domain.FixtureLotto.*;
 import static org.assertj.core.api.Assertions.*;
 
 class LottosTest {
@@ -37,7 +37,7 @@ class LottosTest {
     @MethodSource("match")
     void match(Lottos lottos, int expectedMatchCount, int expectedValue) throws Exception {
         //given
-        WinningLotto winningLotto = new WinningLotto(DefaultLotto.generateLotto());
+        WinningLotto winningLotto = new WinningLotto(FixtureLotto.generateLotto());
 
         //when
         Map<Integer, Integer> actual = lottos.matchResult(winningLotto);

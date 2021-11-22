@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DefaultLotto {
+public class FixtureLotto {
 
-    private DefaultLotto() {
+    private FixtureLotto() {
         throw new AssertionError();
     }
 
