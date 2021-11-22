@@ -8,8 +8,8 @@ public class LottoPrice {
         throw new AssertionError();
     }
 
-    public static int ticketPer(int price) {
-        return price / PRICE_PER_TICKET;
+    public static int ticketPer(Money price) {
+        return price.value() / PRICE_PER_TICKET;
     }
 
 }

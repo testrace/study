@@ -19,18 +19,16 @@ class LottosTest {
     @DisplayName("로또 여러장 생성")
     void construct() throws Exception {
         //given
-
-        //when
-        Lottos actual = generateLottos(
+        Lottos lottos = generateLottos(
                 generateLotto(),
                 generateLotto()
         );
 
+        //when
+        int actual = lottos.ticket();
+
         //then
-        assertThat(actual).isEqualTo(generateLottos(
-                generateLotto(),
-                generateLotto()
-        ));
+        assertThat(actual).isEqualTo(2);
 
     }
 

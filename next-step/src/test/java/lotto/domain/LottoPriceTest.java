@@ -12,9 +12,10 @@ class LottoPriceTest {
     void ticket_per_price() throws Exception {
         //given
         int price = 14_000;
+        Money money = new Money(price);
 
         //when
-        int actual = LottoPrice.ticketPer(price);
+        int actual = LottoPrice.ticketPer(money);
 
         //then
         assertThat(actual).isEqualTo(14);

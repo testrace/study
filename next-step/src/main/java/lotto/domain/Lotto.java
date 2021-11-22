@@ -20,7 +20,11 @@ public class Lotto {
     }
 
     public static Lotto from(List<LottoNumber> lottoNumbers) {
-        return new Lotto(new TreeSet<>(lottoNumbers));
+        return from(new TreeSet<>(lottoNumbers));
+    }
+
+    public static Lotto from(Set<LottoNumber> lottoNumbers) {
+        return new Lotto(lottoNumbers);
     }
 
     public boolean contains(LottoNumber lottoNumber) {
