@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.Arrays;
 
-public enum LottoResult {
+public enum LottoProfit {
     ZERO(0, 0),
     FOURTH(3, 5000),
     THIRD(4, 50000),
@@ -12,16 +12,20 @@ public enum LottoResult {
     private final int count;
     private final int profit;
 
-    LottoResult(int count, int profit) {
+    LottoProfit(int count, int profit) {
         this.count = count;
         this.profit = profit;
     }
 
-    public static LottoResult match(int count) {
+    public static LottoProfit match(int count) {
         return Arrays.stream(values())
-                .filter(lottoResult -> lottoResult.count == count)
+                .filter(profit -> profit.matchingCount(count))
                 .findFirst()
                 .orElse(ZERO);
+    }
+
+    private boolean matchingCount(int count) {
+        return this.count == count;
     }
 
 }
