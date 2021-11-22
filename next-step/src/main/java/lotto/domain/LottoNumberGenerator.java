@@ -25,11 +25,7 @@ public class LottoNumberGenerator {
     }
 
     private static Set<LottoNumber> selectNumbers() {
-        Set<LottoNumber> lottoNumbers = new HashSet<>();
-        for (int i = START_RANGE; i < END_RANGE; i++) {
-            lottoNumbers.add(LOTTO_NUMBERS.get(i));
-        }
-        return Collections.unmodifiableSet(lottoNumbers);
+        return new TreeSet<>(new ArrayList<>(LOTTO_NUMBERS).subList(START_RANGE, END_RANGE));
     }
 
 }
