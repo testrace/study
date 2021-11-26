@@ -10,6 +10,13 @@ public class WinningLotto {
         this.lotto = lotto;
     }
 
+    public int matchingCount(Lotto lotto) {
+        return (int) this.lotto.numbers()
+                .stream()
+                .filter(lotto::contains)
+                .count();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -21,13 +28,6 @@ public class WinningLotto {
     @Override
     public int hashCode() {
         return Objects.hash(lotto);
-    }
-
-    public int matchingCount(Lotto lotto) {
-        return (int) this.lotto.numbers()
-                .stream()
-                .filter(lotto::contains)
-                .count();
     }
 
 }
