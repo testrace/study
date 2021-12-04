@@ -1,11 +1,11 @@
-package problem;
+package problem.step01;
 
 import java.util.Scanner;
 
-public class Q10998 {
+public class Q1008 {
 
-    public static int solution(int first, int second) {
-        return first * second;
+    public static double solution(double first, double second) {
+        return first / second;
     }
 
     public static void main(String[] args) {

@@ -1,25 +1,25 @@
-package problem;
+package problem.step01;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import problem.step01.Q2588;
 
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class Q1008Test {
+class Q2588Test {
 
     @ParameterizedTest(name = "{index} [{arguments}]")
     @MethodSource
-    void test(double first, double second, double expected) throws Exception {
-        assertThat(Q1008.solution(first, second)).isEqualTo(expected);
+    void test(int first, int second, int[] expected) throws Exception {
+        assertThat(Q2588.solution(first, second)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> test() {
         return Stream.of(
-                Arguments.of(1, 3, 0.33333333333333333333333333333333),
-                Arguments.of(4, 5, 0.8)
+                Arguments.of(472, 385, new int[]{2360, 3776, 1416, 181720})
         );
     }
 }
