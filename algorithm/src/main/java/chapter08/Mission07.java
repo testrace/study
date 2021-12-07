@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Mission07 {
 
     static int[][] graph = new int[34][34];
+
     public static int solution(int n, int k) {
         return dfs(n, k);
     }
@@ -16,8 +17,8 @@ public class Mission07 {
         if (k == 0 || n == k) {
             return 1;
         } else {
-            return graph[n][k] = dfs(n-1, k-1) + dfs(n-1, k);
-
+            graph[n][k] = dfs(n-1, k-1) + dfs(n-1, k);
+            return graph[n][k];
         }
     }
 
